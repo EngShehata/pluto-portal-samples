@@ -23,29 +23,32 @@ public class HelloPortlet extends GenericPortlet {
 		synchronized (this) {
 			renderCount++;
 		}
-		PortletURL url=response.createActionURL();
+		PortletURL url = response.createActionURL();
 		System.out.println(url.toString());
 		response.getWriter().print(
-				"<form action=" + url + ">"
-						+ "<p>Render has executed " + renderCount + "</p>"
-						+ "<p>Render has executed " + actionCount + "</p>"
-						+ " Title <input type='text' name='title'value='"+title+"'>"
-						+ "<input type='submit'/>" + "</form>");
+				"<form action=" + url + ">" + "<p>Render has executed "
+						+ renderCount + "</p>" + "<p>Render has executed "
+						+ actionCount + "</p>"
+						+ " Title <input type='text' name='title'value='"
+						+ title + "'>" + "<input type='submit'/>" + "</form>");
 	}
-String title="";
+
+	String title = "";
+
 	@Override
 	public void processAction(ActionRequest actionRequest,
 			ActionResponse actionResponse) {
-		String[] titles=actionRequest.getParameterMap().get("title");
-		if(titles!=null && titles.length>0)
-			title=titles[0];
+		String[] titles = actionRequest.getParameterMap().get("title");
+		if (titles != null && titles.length > 0)
+			title = titles[0];
 		synchronized (this) {
 			actionCount++;
 		}
 	}
+
 	@Override
 	protected String getTitle(RenderRequest request) {
-		if(title!=null && !title.isEmpty())
+		if (title != null && !title.isEmpty())
 			return title;
 		return super.getTitle(request);
 	}
