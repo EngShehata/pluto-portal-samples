@@ -2,6 +2,8 @@ package com.ih.portlet;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -50,7 +52,11 @@ public class HelloPortlet extends GenericPortlet {
 	protected String getTitle(RenderRequest request) {
 		if (title != null && !title.isEmpty())
 			return title;
-		return super.getTitle(request);
+		// If it's like that, just get the defined bundle
+		ResourceBundle bundle = this.getPortletConfig().getResourceBundle(
+				new Locale("en"));
+		// Retrun the string that's corresponded for anyTitle property
+		return (String) bundle.getObject("javax.portlet.title");
 	}
 
 	@Override

@@ -12,6 +12,7 @@ http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd">
 			<portlet-mode>VIEW</portlet-mode>
 		</supports>
 		<supported-locale>en</supported-locale>
+        <resource-bundle>message</resource-bundle>
 		<portlet-info>
 			<title>Hello World Portlet</title>
 			<short-title>Hello World</short-title>
