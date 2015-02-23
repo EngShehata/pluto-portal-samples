@@ -10,13 +10,29 @@ http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd">
 		<supports>
 			<mime-type>text/html</mime-type>
 			<portlet-mode>VIEW</portlet-mode>
+			<portlet-mode>HELP</portlet-mode>
 		</supports>
 		<supported-locale>en</supported-locale>
-        <resource-bundle>message</resource-bundle>
+		<resource-bundle>message</resource-bundle>
 		<portlet-info>
 			<title>Hello World Portlet</title>
 			<short-title>Hello World</short-title>
 			<keywords>Hello,pluto</keywords>
+		</portlet-info>
+	</portlet>
+	<portlet>
+		<portlet-name>UploadPortlet</portlet-name>
+		<display-name>Upload Portlet</display-name>
+		<portlet-class>com.ih.portlet.UploadPortlet</portlet-class>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>VIEW</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<portlet-info>
+			<title>Upload Portlet</title>
+			<short-title>Upload</short-title>
+			<keywords>Upload,pluto</keywords>
 		</portlet-info>
 	</portlet>
 </portlet-app>

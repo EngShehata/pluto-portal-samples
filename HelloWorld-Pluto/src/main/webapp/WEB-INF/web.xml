@@ -17,4 +17,17 @@
         <servlet-name>HelloPortlet</servlet-name>
         <url-pattern>/PlutoInvoker/HelloPortlet</url-pattern>
     </servlet-mapping>
+      <servlet>
+        <servlet-name>UploadPortlet</servlet-name>
+        <servlet-class>org.apache.pluto.container.driver.PortletServlet</servlet-class>
+        <init-param>
+            <param-name>portlet-name</param-name>
+            <param-value>UploadPortlet</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UploadPortlet</servlet-name>
+        <url-pattern>/PlutoInvoker/UploadPortlet</url-pattern>
+    </servlet-mapping>
 </web-app>
