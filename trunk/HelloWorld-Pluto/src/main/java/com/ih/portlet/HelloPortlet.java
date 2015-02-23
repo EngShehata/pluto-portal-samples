@@ -32,7 +32,7 @@ public class HelloPortlet extends GenericPortlet {
 						+ renderCount + "</p>" + "<p>Render has executed "
 						+ actionCount + "</p>"
 						+ " Title <input type='text' name='title'value='"
-						+ title + "'>" + "<input type='submit'/>" + "</form>");
+						+ title + "'>" + "<input type='submit'/>" + "<input type='hidden' name='mode' value='view'/>"+ "</form>");
 	}
 
 	String title = "";
@@ -40,14 +40,51 @@ public class HelloPortlet extends GenericPortlet {
 	@Override
 	public void processAction(ActionRequest actionRequest,
 			ActionResponse actionResponse) {
-		String[] titles = actionRequest.getParameterMap().get("title");
-		if (titles != null && titles.length > 0)
-			title = titles[0];
+		String mode=actionRequest.getParameter("mode");
+		if(mode==null ||mode.equalsIgnoreCase("view"))
+		{
+		title = actionRequest.getParameter("title");
 		synchronized (this) {
 			actionCount++;
 		}
+		}else
+			if(mode.equalsIgnoreCase("edit"))
+			{
+				 String username = actionRequest.getParameter("username");
+			        String password = actionRequest.getParameter("password");
+			         
+			        // Do some checking procedure
+			        if(username != null && password != null){
+			            // Use render parameters to pass the result
+			            actionResponse.setRenderParameter("loggedIn", "true");
+			        }
+			        else {
+			            // Use render parameters to pass the result
+			            actionResponse.setRenderParameter("loggedIn", "false");
+			        }	
+			}
 	}
-
+@Override
+protected void doHelp(RenderRequest request, RenderResponse response)
+		throws PortletException, IOException {
+		if (request.getParameter("loggedIn") == null
+				|| !Boolean.parseBoolean(request.getParameter("loggedIn"))) {
+			response.getWriter()
+					.println(
+							"<form action="
+									+ response.createActionURL()
+									+ ">"
+									+ "Enter Username : <input type='text' id='username' name='username'/>"
+									+ "Enter Password : <input type='password' id='password' name='password'/>"
+									+ "<input type='hidden' name='mode' value='edit'/>"
+									+ "<input type='submit' value='Login'/>"
+									+ "</form>");
+		} else {
+			response.getWriter().println(
+					"<form action=" + response.createActionURL() + ">"
+							+ "<p>You're logged in</p><input type='hidden' name='loggedIn' value='true'/>" + "</form>");
+		}
+}
 	@Override
 	protected String getTitle(RenderRequest request) {
 		if (title != null && !title.isEmpty())
