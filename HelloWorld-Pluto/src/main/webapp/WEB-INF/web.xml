@@ -30,4 +30,26 @@
         <servlet-name>UploadPortlet</servlet-name>
         <url-pattern>/PlutoInvoker/UploadPortlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ContextPortlet</servlet-name>
+        <servlet-class>org.apache.pluto.container.driver.PortletServlet</servlet-class>
+        <init-param>
+            <param-name>portlet-name</param-name>
+            <param-value>ContextPortlet</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ContextPortlet</servlet-name>
+        <url-pattern>/PlutoInvoker/ContextPortlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ContextServlet</servlet-name>
+        <servlet-class>com.ih.servlet.ContextTestServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+        <servlet-mapping>
+        <servlet-name>ContextServlet</servlet-name>
+        <url-pattern>/contextservlet</url-pattern>
+    </servlet-mapping>
 </web-app>
