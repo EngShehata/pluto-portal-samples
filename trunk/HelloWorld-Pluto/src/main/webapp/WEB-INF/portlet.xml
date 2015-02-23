@@ -35,4 +35,19 @@ http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd">
 			<keywords>Upload,pluto</keywords>
 		</portlet-info>
 	</portlet>
+		<portlet>
+		<portlet-name>ContextPortlet</portlet-name>
+		<display-name>Context Portlet</display-name>
+		<portlet-class>com.ih.portlet.ContextPortlet</portlet-class>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>VIEW</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<portlet-info>
+			<title>Context Portlet</title>
+			<short-title>Context</short-title>
+			<keywords>Context,pluto</keywords>
+		</portlet-info>
+	</portlet>
 </portlet-app>
